@@ -1,0 +1,41 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/template/template.xhtml">
+
+	<ui:define name="content">
+		<h:form id="form">
+			<h:panelGrid columns="2">
+				<h:outputLabel value="Cin" />
+				<h:inputText value="#{addEmployeeBean.cin}" />
+				<h:outputLabel value="Nom" />
+				<h:inputText value="#{addEmployeeBean.nom}" />
+				<h:outputLabel value="Prenom" />
+				<h:inputText value="#{addEmployeeBean.prenom}" />
+				<h:outputLabel value="Login" />
+				<h:inputText value="#{addEmployeeBean.login}" />
+				<h:outputLabel value="Password" />
+				<h:inputSecret value="#{addEmployeeBean.password}" />
+				<h:outputLabel value="Id_Contrat" />
+				<h:inputText value="#{addEmployeeBean.idContrat}" />
+				<h:outputLabel value="Salaire" />
+				<h:inputText value="#{addEmployeeBean.salaire}" />
+				
+				<h:outputLabel value="laboratoire:" />
+				
+				<h:selectOneMenu value="#{addEmployeeBean.laboSelectionne}">
+					<f:selectItems value="#{addEmployeeBean.labos}" var="lab"
+						itemLabel="#{lab.nom}" itemValue="lab">
+					</f:selectItems>
+				</h:selectOneMenu>
+
+				<h:commandButton action="#{addEmployeeBean.ajouterEmploye()}"
+					value="Ajouter" />
+			
+			</h:panelGrid>
+		</h:form>
+
+	</ui:define>
+
+</ui:composition>
