@@ -9,7 +9,7 @@ import tn.esprit.nids.labo.recherche.persistence.Todo;
 import tn.esprit.nids.labo.recherche.services.TodoServiceLocal;
 
 @Singleton
-@Startup
+//@Startup
 public class DBPopulator {
 
 	@EJB

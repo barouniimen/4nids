@@ -61,6 +61,13 @@ public class GererLaboService implements GererLaboServiceRemote, GererLaboServic
 		return query.getResultList();	
 		
 	}
+
+	@Override
+	public Labo chercherLaboParNom(String nom) {
+		TypedQuery<Labo> query = em.createQuery("select l from Labo l where l.nom=:nom",Labo.class);
+		query.setParameter("nom", nom);
+		return query.getSingleResult();
+	}
 	
     /**
      * Default constructor. 

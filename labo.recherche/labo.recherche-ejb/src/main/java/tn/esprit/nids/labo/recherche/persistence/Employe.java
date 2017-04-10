@@ -75,6 +75,65 @@ public class Employe  implements Serializable  {
 	public void setLabo(Labo labo) {
 		this.labo = labo;
 	}
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((cin == null) ? 0 : cin.hashCode());
+		result = prime * result + ((contrat == null) ? 0 : contrat.hashCode());
+		result = prime * result + ((labo == null) ? 0 : labo.hashCode());
+		result = prime * result + ((login == null) ? 0 : login.hashCode());
+		result = prime * result + ((nom == null) ? 0 : nom.hashCode());
+		result = prime * result + ((password == null) ? 0 : password.hashCode());
+		result = prime * result + ((prenom == null) ? 0 : prenom.hashCode());
+		return result;
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Employe other = (Employe) obj;
+		if (cin == null) {
+			if (other.cin != null)
+				return false;
+		} else if (!cin.equals(other.cin))
+			return false;
+		if (contrat == null) {
+			if (other.contrat != null)
+				return false;
+		} else if (!contrat.equals(other.contrat))
+			return false;
+		if (labo == null) {
+			if (other.labo != null)
+				return false;
+		} else if (!labo.equals(other.labo))
+			return false;
+		if (login == null) {
+			if (other.login != null)
+				return false;
+		} else if (!login.equals(other.login))
+			return false;
+		if (nom == null) {
+			if (other.nom != null)
+				return false;
+		} else if (!nom.equals(other.nom))
+			return false;
+		if (password == null) {
+			if (other.password != null)
+				return false;
+		} else if (!password.equals(other.password))
+			return false;
+		if (prenom == null) {
+			if (other.prenom != null)
+				return false;
+		} else if (!prenom.equals(other.prenom))
+			return false;
+		return true;
+	}
 	
 	
 	

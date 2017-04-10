@@ -48,6 +48,44 @@ public class Labo  implements Serializable {
 	public void setAdresse(Adresse adresse) {
 		this.adresse = adresse;
 	}
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((adresse == null) ? 0 : adresse.hashCode());
+		result = prime * result + ((employes == null) ? 0 : employes.hashCode());
+		result = prime * result + id;
+		result = prime * result + ((nom == null) ? 0 : nom.hashCode());
+		return result;
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Labo other = (Labo) obj;
+		if (adresse == null) {
+			if (other.adresse != null)
+				return false;
+		} else if (!adresse.equals(other.adresse))
+			return false;
+		if (employes == null) {
+			if (other.employes != null)
+				return false;
+		} else if (!employes.equals(other.employes))
+			return false;
+		if (id != other.id)
+			return false;
+		if (nom == null) {
+			if (other.nom != null)
+				return false;
+		} else if (!nom.equals(other.nom))
+			return false;
+		return true;
+	}
 	
 	
 	

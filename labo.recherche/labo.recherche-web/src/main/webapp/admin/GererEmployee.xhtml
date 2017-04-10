@@ -1,0 +1,51 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/template/template.xhtml">
+
+	<ui:define name="content">
+		<h:form>
+			<h:dataTable border="2" value="#{gererEmployeeBean.employes}"
+				var="emp">
+
+				<f:facet name="header">Liste des employes</f:facet>
+
+				<h:column>
+					<f:facet name="header">Nom</f:facet>
+					<h:outputText value="#{emp.nom}" />
+				</h:column>
+
+				<h:column>
+					<f:facet name="header">Prenom</f:facet>
+					<h:outputText value="#{emp.prenom}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">Action</f:facet>
+					<h:commandButton value="Mise à jour">
+						<f:setPropertyActionListener value="true"
+							target="#{gererEmployeeBean.renderUpdateForm}" />
+						<f:setPropertyActionListener value="#{emp}"
+							target="#{gererEmployeeBean.employeMiseAjour}" />
+					</h:commandButton>
+				</h:column>
+			</h:dataTable>
+
+		</h:form>
+
+		<h:form rendered="#{gererEmployeeBean.renderUpdateForm}">
+			<h:outputLabel value="nom" />
+			<h:inputText value="#{gererEmployeeBean.employeMiseAjour.nom}" />
+			<h:outputLabel value="prenom" />
+			<h:inputText value="#{gererEmployeeBean.employeMiseAjour.prenom}" />
+			<h:commandButton action="#{gererEmployeeBean.mettreAjour()}" value="Mise à jour" />
+
+		</h:form>
+
+	</ui:define>
+
+
+
+
+
+</ui:composition>

@@ -17,5 +17,6 @@ public interface GererLaboServiceLabo {
 	void affecterEmployeLabo(Employe emp ,Labo labo);
 	Labo chercherLaboById(int id);
 	List<Labo> listLabo();
+	Labo chercherLaboParNom(String nom);
 
 }

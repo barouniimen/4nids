@@ -42,6 +42,38 @@ public class Contrat   implements Serializable {
 	public void setEmploye(Employe employe) {
 		this.employe = employe;
 	}
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((employe == null) ? 0 : employe.hashCode());
+		result = prime * result + id;
+		result = prime * result + Float.floatToIntBits(salaire);
+		result = prime * result + ((typecontrat == null) ? 0 : typecontrat.hashCode());
+		return result;
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Contrat other = (Contrat) obj;
+		if (employe == null) {
+			if (other.employe != null)
+				return false;
+		} else if (!employe.equals(other.employe))
+			return false;
+		if (id != other.id)
+			return false;
+		if (Float.floatToIntBits(salaire) != Float.floatToIntBits(other.salaire))
+			return false;
+		if (typecontrat != other.typecontrat)
+			return false;
+		return true;
+	}
 	
 	
 

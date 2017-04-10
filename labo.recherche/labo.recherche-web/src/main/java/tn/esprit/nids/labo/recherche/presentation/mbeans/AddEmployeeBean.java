@@ -4,8 +4,10 @@ import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.faces.context.FacesContext;
 
 import tn.esprit.nids.labo.recherche.persistence.Contrat;
 import tn.esprit.nids.labo.recherche.persistence.Employe;
@@ -26,6 +28,8 @@ public class AddEmployeeBean {
 	private float salaire;
 	private List<Labo> labos;
 	private Labo laboSelectionne;
+	private Integer idLaboSelectionne;
+
 
 	@EJB
 	GererLaboServiceLabo gererLaboServiceLocal;
@@ -38,6 +42,7 @@ public class AddEmployeeBean {
 		labos= gererLaboServiceLocal.listLabo();
 		laboSelectionne = new Labo();
 		
+		
 	}
 	
 	public String ajouterEmploye() {
@@ -46,14 +51,18 @@ public class AddEmployeeBean {
 		contrat.setId(idContrat);
 		contrat.setSalaire(salaire);
 		employe.setCin(cin);
+	System.out.println("emp");
 		employe.setContrat(contrat);
 		employe.setLogin(login);
 		employe.setNom(nom);
 		employe.setPassword(password);
 		employe.setPrenom(prenom);
+		System.out.println("laboo");
+		//laboSelectionne=gererLaboServiceLocal.chercherLaboById(idLaboSelectionne);
 		System.out.println(laboSelectionne.getNom());
 		employe.setLabo(laboSelectionne);
 		employeeServiceLocal.creerEmployee(employe);
+		
 		return null;
 	}
 
@@ -128,5 +137,15 @@ public class AddEmployeeBean {
 	public void setLaboSelectionne(Labo laboSelectionne) {
 		this.laboSelectionne = laboSelectionne;
 	}
+
+	public Integer getIdLaboSelectionne() {
+		return idLaboSelectionne;
+	}
+
+	public void setIdLaboSelectionne(Integer idLaboSelectionne) {
+		this.idLaboSelectionne = idLaboSelectionne;
+	}
+
+
 
 }
