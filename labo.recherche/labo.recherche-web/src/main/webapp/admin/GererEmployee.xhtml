@@ -33,13 +33,44 @@
 
 		</h:form>
 
-		<h:form rendered="#{gererEmployeeBean.renderUpdateForm}">
-			<h:outputLabel value="nom" />
-			<h:inputText value="#{gererEmployeeBean.employeMiseAjour.nom}" />
-			<h:outputLabel value="prenom" />
-			<h:inputText value="#{gererEmployeeBean.employeMiseAjour.prenom}" />
-			<h:commandButton action="#{gererEmployeeBean.mettreAjour()}" value="Mise à jour" />
+		<h:form id="updateForm"
+			rendered="#{gererEmployeeBean.renderUpdateForm}">
 
+			<h:panelGrid columns="2">
+				<h:outputLabel value="nom" />
+				<h:inputText value="#{gererEmployeeBean.employeMiseAjour.nom}" />
+				<h:outputLabel value="prenom" />
+				<h:inputText value="#{gererEmployeeBean.employeMiseAjour.prenom}" />
+				<h:outputLabel value="Login" />
+				<h:inputText id="loginId"
+					validatorMessage="La longueur doit être comprise entre 5 et 10!"
+					requiredMessage="Login obligatoire!" required="true"
+					value="#{gererEmployeeBean.employeMiseAjour.login}">
+					<f:validateLength maximum="10" minimum="5" />
+
+				</h:inputText>
+				<h:message for="loginId" />
+				<br />
+				<h:outputLabel value="password" />
+				<h:inputSecret id="passwordId"
+					validatorMessage="Vous devez insérer 4 lettres suivies de 3 chiffres!"
+					required="true" requiredMessage="Password obligatoire"
+					value="#{gererEmployeeBean.employeMiseAjour.password}">
+					<f:validateRegex pattern="[a-z]{4}[0-9]{3}" />
+				</h:inputSecret>
+				<h:message for="passwordId" styleClass="color:red;" />
+				<br />
+				<h:outputLabel value="Date de naissance" />
+				<h:inputText id="idDate"
+					value="#{gererEmployeeBean.employeMiseAjour.dateNaissace}">
+					<f:convertDateTime pattern="yyyy/mm/dd" />
+				</h:inputText>
+				<h:message for="idDate" />
+				<br />
+				<h:commandButton id="idBtn"
+					action="#{gererEmployeeBean.mettreAjour()}" value="Mise à jour" />
+				<h:message for="idBtn" />
+			</h:panelGrid>
 		</h:form>
 
 	</ui:define>

@@ -1,6 +1,7 @@
 package tn.esprit.nids.labo.recherche.persistence;
 
 import java.io.Serializable;
+import java.util.Date;
 
 import javax.persistence.*;
 
@@ -23,6 +24,7 @@ public class Employe  implements Serializable  {
 	private String nom;
 	private String prenom;
 	private Contrat  contrat;
+	private Date dateNaissace;
 	private Labo labo ;
 	private String login;
 	private String password;
@@ -133,6 +135,12 @@ public class Employe  implements Serializable  {
 		} else if (!prenom.equals(other.prenom))
 			return false;
 		return true;
+	}
+	public Date getDateNaissace() {
+		return dateNaissace;
+	}
+	public void setDateNaissace(Date dateNaissace) {
+		this.dateNaissace = dateNaissace;
 	}
 	
 	
